@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  - Gimmic
   - Elevator
-  - Explosive
+  - PushableBox
   layers:
   - Default
   - TransparentFX

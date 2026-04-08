@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] float rotateAngle = 90f, moveDistance = 1f;
+    [SerializeField] float rotateAngle = 90f, moveDistance = 1f, openSpeed;
     [SerializeField] bool isOpened, slide;
     Vector3 originPosition;
     Quaternion originRotation;
@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
     {
         originPosition = transform.localPosition;
         originRotation = gameObject.transform.localRotation;
+        openSpeed *= Time.deltaTime;
     }
 
     void Update()
@@ -19,22 +20,22 @@ public class Door : MonoBehaviour
         {
             if (slide)
             {
-                transform.localPosition = Vector3.Lerp(transform.localPosition, originPosition + transform.right * moveDistance, 0.1f);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, originPosition + transform.right * moveDistance, openSpeed);
             }
             else
             {
-                gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.localRotation, Quaternion.Euler(originRotation.eulerAngles + new Vector3(0, rotateAngle, 0)), 0.1f);
+                gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.localRotation, Quaternion.Euler(originRotation.eulerAngles + new Vector3(0, rotateAngle, 0)), openSpeed);
             }
         }
         else
         {
             if (slide)
             {
-                transform.localPosition = Vector3.Lerp(transform.localPosition, originPosition, 0.1f);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, originPosition, openSpeed);
             }
             else
             {
-                gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.localRotation, originRotation, 0.1f);
+                gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.localRotation, originRotation, openSpeed);
             }
         }
     }

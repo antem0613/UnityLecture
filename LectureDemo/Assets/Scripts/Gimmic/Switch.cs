@@ -35,10 +35,9 @@ public class Switch : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Gimmic")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "PushableBox")
         {
             objectCount++;
-            Debug.Log("Switch Triggered by " + other.gameObject.name);
             if (objectCount > 1) return;
             isPressed = true;
             onPressed.Invoke();
@@ -47,7 +46,7 @@ public class Switch : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag != "Gimmic")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "PushableBox")
         {
             objectCount--;
             if (objectCount > 0) return;

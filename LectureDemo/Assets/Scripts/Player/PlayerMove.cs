@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (currentUp < 0 && characterController.isGrounded)
+        if (characterController.isGrounded)
         {
             currentUp = 0;
         }
@@ -45,10 +45,7 @@ public class PlayerMove : MonoBehaviour
             currentUp = jumpForce;
         }
 
-        if (!characterController.isGrounded)
-        {
-            currentUp -= gravity * Time.deltaTime;
-        }
+        currentUp -= gravity * Time.deltaTime;
 
         direction += transform.up * currentUp;
 
@@ -58,7 +55,7 @@ public class PlayerMove : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == "Pushable")
+        if (hit.gameObject.tag == "PushableBox")
         {
             Rigidbody rb = hit.collider.attachedRigidbody;
 

@@ -8,7 +8,7 @@ public class DoorManager : MonoBehaviour
 
     void Start()
     {
-        foreach (var door in doors = GetComponentsInChildren<Door>())
+        foreach (var door in doors)
         {
             Opened += door.Open;
             Closed += door.Close;

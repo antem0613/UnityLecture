@@ -4,30 +4,23 @@ public class Elevator : MonoBehaviour
 {
     [SerializeField] Vector3 relativeMoveTo;
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] bool autoBack, loop;
+    [SerializeField] bool loop;
     [SerializeField] float waitTime = 2f;
     Vector3 originPos, moveTo;
-    bool inOrigin;
+    bool inOrigin, invoked;
     bool shouldMove = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         originPos = transform.localPosition;
         moveTo = originPos + relativeMoveTo;
         inOrigin = true;
-
-        if (loop)
-        {
-            autoBack = false;
-            shouldMove = true;
-        }
+        invoked = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(!inOrigin && shouldMove)
+        if(!inOrigin)
         {
             shouldMove = Vector3.Distance(transform.localPosition, moveTo) > 0.01f;
 
@@ -35,12 +28,13 @@ public class Elevator : MonoBehaviour
             {
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, moveTo, moveSpeed * Time.deltaTime);
             }
-            else if(autoBack || loop)
+            else if(loop && !invoked)
             {
                 Invoke(nameof(Move), waitTime);
+                invoked = true;
             }
         }
-        else if(shouldMove)
+        else
         {
             shouldMove = Vector3.Distance(transform.localPosition, originPos) > 0.01f;
 
@@ -48,18 +42,18 @@ public class Elevator : MonoBehaviour
             {
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, originPos, moveSpeed * Time.deltaTime);
             }
-            else if(loop)
+            else if(loop && !invoked)
             {
                 Invoke(nameof(Move), waitTime);
+                invoked = true;
             }
         }
     }
 
     public void Move()
     {
-        Debug.Log("isOrigin: " + inOrigin);
         inOrigin = !inOrigin;
-        shouldMove = true;
+        invoked = false;
     }
 
     public Vector3 GetVelocity()

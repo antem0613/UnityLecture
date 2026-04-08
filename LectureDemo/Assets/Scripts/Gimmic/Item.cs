@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    [SerializeField] float rotateSpeed, bounceHeight, bounceSpeed;
+    [SerializeField] float rotateSpeed = 90f, bounceHeight = 0.2f, bounceSpeed = 2f;
     Vector3 initialPos;
     float delta;
 
