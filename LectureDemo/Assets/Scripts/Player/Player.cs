@@ -4,26 +4,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Transform spawnPoint;
     CharacterController characterController;
-    int score = 0;
 
     void Start()
     {
-        score = 0;
         characterController = GetComponent<CharacterController>();
     }
-    void Update()
-    {
-        
-    }
 
-    public void AddScore(int points)
+    public void GetDamage()
     {
-        score += points;
-    }
-
-    public int GetScore()
-    {
-        return score;
+        Debug.Log("Player Get Damage");
+        Respawn();
     }
 
     public void Respawn()
