@@ -22,7 +22,7 @@ public abstract class Item : MonoBehaviour
         gameObject.transform.localPosition = initialPos + Vector3.up * (Mathf.Cos(delta) + 1f) * bounceHeight;
     }
 
-    void OnPickup(GameObject player)
+    public virtual void OnPickup(GameObject player)
     {
         
     }
