@@ -18,7 +18,7 @@ public class Elevator : MonoBehaviour
         invoked = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!inOrigin)
         {
