@@ -63,5 +63,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d44c89e210f62144f999a5b4c6a2c667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4699504956779973481}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d44c89e210f62144f999a5b4c6a2c667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8805356437389193399}
   m_SourcePrefab: {fileID: 100100000, guid: d44c89e210f62144f999a5b4c6a2c667, type: 3}
+--- !u!1 &2996470127999755638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d44c89e210f62144f999a5b4c6a2c667, type: 3}
+  m_PrefabInstance: {fileID: 2690039195966347303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4699504956779973481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996470127999755638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248833e7717bac9498843b6ce2ed62fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  rotateAngle: 90
+  moveDistance: -3
+  openSpeed: 1
+  isOpened: 0
+  slide: 1
+--- !u!65 &8805356437389193399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996470127999755638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 0.06000018}
+  m_Center: {x: 1.5, y: 1.5, z: 0}

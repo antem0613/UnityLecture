@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float gravity = 9.81f;
     [SerializeField] float sprintMultiplier = 2f;
+    [SerializeField] float pushForce = 5f;  
     [SerializeField] InputActionAsset inputActions;
     CharacterController characterController;
     InputAction moveAction;
@@ -62,7 +63,7 @@ public class PlayerMove : MonoBehaviour
             if (rb != null && !rb.isKinematic && rb.linearVelocity.y < 0.3f)
             {
                 Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-                rb.AddForceAtPosition(pushDir * moveSpeed, hit.point, ForceMode.Impulse);
+                rb.AddForceAtPosition(pushDir * pushForce, hit.point, ForceMode.Impulse);
             }
         }
     }
