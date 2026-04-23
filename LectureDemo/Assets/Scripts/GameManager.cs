@@ -1,10 +1,13 @@
 using UnityEngine;
+using System;
 
 public class GameManager : Singleton<GameManager>
 {
     int score = 0;
     int keys = 0;
     [SerializeField] int maxKeys = 3;
+
+    public event EventHandler OnGetKey;
 
     void Start()
     {
@@ -41,6 +44,7 @@ public class GameManager : Singleton<GameManager>
 
     public int GetKeys()
     {
+        OnGetKey?.Invoke(this, EventArgs.Empty);
         return keys;
     }
 
