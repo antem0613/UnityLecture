@@ -7,7 +7,7 @@ public class KeyIndicator : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnGetKey += StepIndicator;
+        GameManager.Instance.OnAddKey += StepIndicator;
     }
 
     void StepIndicator(object obj, EventArgs e)

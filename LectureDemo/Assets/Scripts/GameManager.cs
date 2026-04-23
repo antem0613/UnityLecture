@@ -6,8 +6,9 @@ public class GameManager : Singleton<GameManager>
     int score = 0;
     int keys = 0;
     [SerializeField] int maxKeys = 3;
+    [SerializeField] GameObject GameClearPanel;
 
-    public event EventHandler OnGetKey;
+    public event EventHandler OnAddKey;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     {
         score = 0;
         keys = 0;
+        GameClearPanel.SetActive(false);
     }
 
     public void AddScore(int amount)
@@ -38,13 +40,13 @@ public class GameManager : Singleton<GameManager>
 
     public void AddKey()
     {
+        OnAddKey?.Invoke(this, EventArgs.Empty);
         keys++;
         Debug.Log("Keys: " + keys + "/" + maxKeys);
     }
 
-    public int GetKeys()
+    public int GetKeyCount()
     {
-        OnGetKey?.Invoke(this, EventArgs.Empty);
         return keys;
     }
 
@@ -55,6 +57,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameClear()
     {
+        GameClearPanel.SetActive(true);
         Debug.Log("Game Clear! Final Score: " + score);
     }
 }
