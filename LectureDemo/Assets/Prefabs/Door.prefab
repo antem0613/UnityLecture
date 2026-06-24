@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6847037803810152589, guid: 4220b51859a40e746a893fbfcab762e3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 98bfe2e80aa038849a88abff19ae1e13, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78,4 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
   rotateAngle: 90
+  moveDistance: 1
+  openSpeed: 0
   isOpened: 0
+  slide: 0
