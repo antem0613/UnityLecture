@@ -17,12 +17,15 @@ public class PlayerMove : MonoBehaviour
     Vector3 direction, floorDir;
     float  currentUp;
 
+    Animator playerAnimator;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         moveAction = inputActions.FindAction("Move");
         jumpAction = inputActions.FindAction("Jump");
         sprintAction = inputActions.FindAction("Sprint");
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +33,7 @@ public class PlayerMove : MonoBehaviour
         if (characterController.isGrounded)
         {
             currentUp = 0;
+            playerAnimator.SetBool("IsJumping", false);
         }
 
         moveInput = moveAction.ReadValue<Vector2>();
@@ -44,11 +48,16 @@ public class PlayerMove : MonoBehaviour
         if (jumpAction.triggered && currentUp == 0)
         {
             currentUp = jumpForce;
+            playerAnimator.SetBool("IsJumping", true);
+            playerAnimator.SetTrigger("Jumpped");
         }
 
         currentUp -= gravity * Time.deltaTime;
 
         direction += transform.up * currentUp;
+
+        playerAnimator.SetFloat("MoveSide", direction.normalized.x);
+        playerAnimator.SetFloat("MoveForward", direction.normalized.z);
 
         characterController.Move(floorDir + direction * Time.deltaTime);
         floorDir = Vector3.zero;
